@@ -1,5 +1,7 @@
+
+var form;
+
 function makeEditable() {
-    var form;
     form = $('#detailsForm');
     $(document).ajaxError(function (event, jqXHR, options, jsExc) {
         failNoty(jqXHR);

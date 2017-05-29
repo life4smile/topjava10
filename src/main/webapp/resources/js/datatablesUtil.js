@@ -41,6 +41,11 @@ function save() {
     });
 }
 
+function clearFilter() {
+    $("#filter")[0].reset();
+    $.get(ajaxUrl, updateTableByData);
+}
+
 var failedNote;
 
 function closeNoty() {

@@ -52,17 +52,11 @@
                             </div>
                         </form>
                     </div>
-                    <div class="panel-footer text-right">
-                        <a class="btn btn-danger" type="button" onclick="clearFilter()">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        </a>
-                        <a class="btn btn-primary" type="button" onclick="updateTable()">
-                            <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
-                        </a>
-                    </div>
+
                 </div>
                     </div>
                 </div>
+
                 <a class="btn btn-primary" onclick="add()">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     <spring:message code="common.add"/>
@@ -77,24 +71,7 @@
                         <th></th>
                     </tr>
                     </thead>
-                    <c:forEach items="${meals}" var="meal">
-                        <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.to.MealWithExceed"/>
-                        <tr class="${meal.exceed ? 'exceeded' : 'normal'}">
-                            <td>
-                                    <%--<fmt:parseDate value="${meal.dateTime}" pattern="y-M-dd'T'H:m" var="parsedDate"/>--%>
-                                    <%--<fmt:formatDate value="${parsedDate}" pattern="yyyy.MM.dd HH:mm" />--%>
-                                    ${fn:formatDateTime(meal.dateTime)}
-                            </td>
-                            <td>${meal.description}</td>
-                            <td>${meal.calories}</td>
-                            <td><a>
-                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                            </a></td>
-                            <td><a onclick="deleteRow(${meal.id})">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </a></td>
-                        </tr>
-                    </c:forEach>
+
                 </table>
             </div>
         </div>
@@ -151,5 +128,11 @@
         </div>
     </div>
 </div>
+<jsp:include page="fragments/footer.jsp"/>
 </body>
+<jsp:include page="fragments/i18n.jsp"/>
+<script type="text/javascript">
+    i18n["addTitle"] = '<spring:message code="meals.add"/>';
+    i18n["editTitle"] = '<spring:message code="meals.edit"/>';
+</script>
 </html>
